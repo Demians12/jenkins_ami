@@ -1,4 +1,7 @@
 {
+  "variables" : {
+    "ssh_key": "/Users/max.santos/.ssh/id_rsa"
+},
   "builders": [
     {
       "type": "amazon-ebs",
@@ -10,10 +13,25 @@
     }
   ],
   "provisioners" : [
+    {
+      "type" : "file", 
+      "source" : "./scripts", 
+      "destination" : "/tmp/" 
+      },
       {
-          "type" : "shell",
-          "script" : "./setup.sh",
-          "execute_command" : "sudo  sh '{{ .Path }}'"
+      "type" : "file", 
+      "source" : "./config/", 
+      "destination" : "/tmp/" 
+      },
+      {
+      "type" : "file", 
+      "source" : "{{user `ssh_key`}}", 
+      "destination" : "/tmp/id_rsa" 
+      },
+      {
+      "type" : "shell", 
+      "script" : "./setup.sh", 
+      "execute_command" : "sudo -E -S sh '{{ .Path }}'" 
       }
-  ]
+    ]
 }
