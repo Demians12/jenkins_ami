@@ -36,6 +36,7 @@ build-pipeline-plugin
 checks-api
 cloudbees-bitbucket-branch-source
 cloudbees-folder
+cloudbees-credentials
 command-launcher
 conditional-buildstep
 config-file-provider
@@ -66,6 +67,7 @@ handy-uri-templates-2-api
 htmlpublisher
 jackson2-api
 javadoc
+jclouds-jenkins
 jdk-tool
 jenkins-design-language
 jira

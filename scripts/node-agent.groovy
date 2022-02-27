@@ -6,13 +6,15 @@ import com.cloudbees.plugins.credentials.impl.*
 import com.cloudbees.jenkins.plugins.sshcredentials.impl.*
 import hudson.plugins.sshslaves.*;
 
-domain = Domain.global()
-store = Jenkins.instance.getExtensionList('com.cloudbees.plugins.credentials \
-.SystemCredentialsProvider')[0].getStore()
+println "--> creating SSH credentials"
 
-slavesPrivateKey = new BasicSSHUserPrivateKey(CredentialsScope.GLOBAL, 
-"Jenkins-workers", 
-"Ec2-user", 
+domain = Domain.global()
+store = Jenkins.instance.getExtensionList('com.cloudbees.plugins.credentials.SystemCredentialsProvider')[0].getStore()
+
+slavesPrivateKey = new BasicSSHUserPrivateKey(
+CredentialsScope.GLOBAL, 
+"jenkins-slaves", 
+"ubuntu", 
 new BasicSSHUserPrivateKey.UsersPrivateKeySource(), 
 "", 
 ""
